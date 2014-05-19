@@ -41,6 +41,16 @@ public class AuthorFactory {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			logger.warning("读取文件失败：" + AUTHOR_PRO_PATH);
+		}finally{
+			if(inputStream != null){
+				try {
+					inputStream.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
 		}
 	}
 	
