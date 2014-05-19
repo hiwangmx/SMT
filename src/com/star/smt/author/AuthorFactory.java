@@ -8,6 +8,8 @@ import java.util.Properties;
 import java.util.logging.Logger;
 
 import com.star.smt.bean.Author;
+import com.star.smt.util.FileUtils;
+import com.star.smt.util.HttpUtils;
 
 public class AuthorFactory {
 	
@@ -42,15 +44,7 @@ public class AuthorFactory {
 			e.printStackTrace();
 			logger.warning("读取文件失败：" + AUTHOR_PRO_PATH);
 		}finally{
-			if(inputStream != null){
-				try {
-					inputStream.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			
+			FileUtils.closeInputStream(inputStream);
 		}
 	}
 	
@@ -58,11 +52,16 @@ public class AuthorFactory {
 	 * 开始认证
 	 */
 	public static void author(){
-		
+		Author author = getAuthor();
+		if(author == null){
+			init();
+			author = getAuthor();
+		}
+		String authorUrl = HttpUtils.getAuthorUrl(author);
 	}
 	
 	/**
-	 * 回去认证信息
+	 * 获取认证信息,必须先初始化
 	 * @return
 	 */
 	public static Author getAuthor(){
