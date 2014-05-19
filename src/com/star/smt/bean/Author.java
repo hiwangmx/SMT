@@ -19,6 +19,9 @@ public class Author {
 	 *  验证签名的方式为对参数执行同样的签名，比较传入的签名结果和计算的结果是否一致，一致为验签通过。
 	 */
 	
+	//认证地址
+	public static final String AUTHOR_URL = "author_url";
+
 	// app注册时，分配给app的唯一标示，又称appKey
 	public static final String CLIENT_ID = "client_id";
 	// 参数标识当前授权的站点，直接填写aliexpress
@@ -30,11 +33,35 @@ public class Author {
 	// 签名
 	public static final String AOP_SIGNATURE = "aop_signature";
 
+	private String authorUrl;
 	private String clientId;
 	private String site;
 	private String redirectUrl;
 	private String state;
 	private String aopSignature;
+
+	public Author(){
+		
+	}
+	
+	public Author(String authorUrl, String clientId, String site,
+			String redirectUrl, String state, String aopSignature) {
+		super();
+		this.authorUrl = authorUrl;
+		this.clientId = clientId;
+		this.site = site;
+		this.redirectUrl = redirectUrl;
+		this.state = state;
+		this.aopSignature = aopSignature;
+	}
+	
+	public String getAuthorUrl() {
+		return authorUrl;
+	}
+
+	public void setAuthorUrl(String authorUrl) {
+		this.authorUrl = authorUrl;
+	}
 
 	public String getClientId() {
 		return clientId;
