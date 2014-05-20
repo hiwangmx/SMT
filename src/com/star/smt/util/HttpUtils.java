@@ -12,7 +12,11 @@ public class HttpUtils {
 	public static String getAuthorUrl(Author author){
 		StringBuilder sb = new StringBuilder();
 		sb.append(author.getAuthorUrl())
-			.append(Author.CLIENT_ID + "=" + author.getClientId());
+			.append(Author.CLIENT_ID + "=" + author.getClientId())
+			.append("&" + Author.SITE + "=" + author.getSite())
+			.append("&" + Author.REDIRECT_URL + "=" + author.getRedirectUrl())
+			.append("&" + Author.STATE + "=" + author.getState())
+			.append("&" + Author.AOP_SIGNATURE + "=" + author.getAopSignature());
 		return sb.toString();
 	}
 	

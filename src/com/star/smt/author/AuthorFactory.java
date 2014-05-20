@@ -49,15 +49,15 @@ public class AuthorFactory {
 	}
 	
 	/**
-	 * 开始认证
+	 * 开始认证，获取认证路经
 	 */
-	public static void author(){
+	public static String getAuthorURL(){
 		Author author = getAuthor();
 		if(author == null){
 			init();
 			author = getAuthor();
 		}
-		String authorUrl = HttpUtils.getAuthorUrl(author);
+		return HttpUtils.getAuthorUrl(author);
 	}
 	
 	/**
@@ -68,9 +68,13 @@ public class AuthorFactory {
 		return author;
 	}
 	
+	/**
+	 * 测试
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		AuthorFactory.init();
-		System.out.println(AuthorFactory.getAuthor().getAuthorUrl());
+		System.out.println(AuthorFactory.getAuthorURL());
 	}
 	
 }
