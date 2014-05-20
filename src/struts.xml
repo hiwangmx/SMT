@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+    
+<struts>
+	
+	<!-- 设置常量，也可以在src目录下写struts.properties来覆盖struts2.0底层默认配置文件default.properties中的核心参数配置 -->
+	<constant name="struts.i18n.encoding" value="utf-8"/>
+
+	<!-- 开发提示：出错时打印更详细的信息 -->
+	<constant name="struts.devMode" value="true"/>
+
+	 
+
+	<package name="default" extends="struts-default">
+	
+		<!-- 定义拦截器 -->
+		<interceptors>
+			<interceptor name="indexInterceptor" class="com.star.smt.interceptor.IndexInterceptor"/>
+			<interceptor-stack name="baseInterceptorStack">
+				<interceptor-ref name="indexInterceptor"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+		
+		<!-- 默认拦截器 -->
+		<default-interceptor-ref name="baseInterceptorStack"/>
+		
+		<default-action-ref name="index"/>
+	
+		<global-results>
+			<result name="404">404.jsp</result>
+		</global-results>
+	
+		<action name="index" method="index" class="com.star.smt.action.IndexAction">
+			<result name="index">index.jsp</result>
+		</action>
+		
+		<action name="404" method="noFoundPage" class="com.star.smt.action.IndexAction">
+			<result name="404">404.jsp</result>
+		</action>
+		
+	</package>
+	
+</struts>
