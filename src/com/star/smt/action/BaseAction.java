@@ -19,6 +19,6 @@ public class BaseAction extends ActionSupport implements ServletRequestAware{
 	public void setServletRequest(HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		this.request = request;
-	}
+	} 
 	
 }

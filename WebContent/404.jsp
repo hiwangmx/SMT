@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	找不到页面
+	404找不到页面
 </body>
 </html>
